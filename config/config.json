@@ -1,0 +1,10 @@
+{
+	"PORT": 3000,
+	"ROOT_URL_STATIC": "",
+	"LESS_SETTINGS": {
+		"dest": "./public/css",
+		"src": "./public/less",
+		"prefix": "/css",
+		"debug": true
+	}
+}
