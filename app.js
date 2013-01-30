@@ -1,3 +1,6 @@
+/*jshint es5:true */
+/*global require:true, __dirname:true, console:true */
+
 // Modules.
 var express = require('express'),
 	routes = require('./routes'),

@@ -10,13 +10,12 @@ define(
 	function (app, $, _, angular, debug) {
 		'use strict';
 
-		var controller = app.gallery.controller(
+		app.gallery.controller(
 			'PhotoListCtrl',
 			[
 				'$scope',
-				'$http',
 				'Photo',
-				function ($scope, $http, Photo) {
+				function ($scope, Photo) {
 					// Collection of photos.
 					$scope.photos = [];
 
@@ -38,7 +37,5 @@ define(
 				}
 			]
 		);
-
-		return controller;
 	}
 );

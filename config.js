@@ -1,3 +1,5 @@
+/*global require:true, __dirname:true, process:true, module:true */
+
 // The purpose of this file is to setup the use
 // of a configuration file for our node development server.
 
