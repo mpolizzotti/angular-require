@@ -16,7 +16,5 @@ module.exports = function (app) {
 	// Routes.
 	app.get('/', index);
 	app.get('/home', index);
-	app.get('/conference', index);
-	app.get('/share', index);
-	app.get('/response', index);
+	app.get('/photos', index);
 };

@@ -1,6 +1,4 @@
-define(
-	'filter/filter',
-	[],
+define([],
 function () {
 	var filter = {label: 'filter'};
 	return filter;

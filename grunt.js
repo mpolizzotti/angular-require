@@ -1,3 +1,10 @@
+/*global exports:true, module:true, require:true */
+
+// Modules.
+var nconf = require('nconf'),
+	config = require('./config');
+
+// Grunt.
 module.exports = function (grunt) {
 	'use strict';
 
@@ -5,15 +12,49 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: '<json:package.json>',
 
+		// Server used for tests.
+		server: {
+			port: nconf.get('GRUNT_PORT'),
+			base: nconf.get('GRUNT_BASE_URL')
+		},
+
+		// Executes jasmine tests with phantomjs.
+		exec: {
+			jasmine: {
+				command: 'phantomjs public/js/lib/jasmine/jasmine-runner.js http://' + nconf.get('GRUNT_HOST') + ':' + nconf.get('GRUNT_PORT') + '/js/test/',
+				stdout: true
+			}
+		},
+
+		// Watch source and spec files.
+		// When they change execute the exec task.
+		watch: {
+			src: {
+				files: [
+					'public/js/src/**/*.js',
+					'public/js/test/**/*.js',
+					'config/*.js',
+					'lib/*.js',
+					'*.js'
+				],
+				tasks: ['lint']
+			},
+			test: {
+				files: [
+					'public/js/src/**/*.js',
+					'public/js/test/**/*.js'
+				],
+				tasks: ['exec']
+			}
+		},
+
 		// Linted Directories.
 		lint: {
 			all: [
-				'public/js/src/*.js',
-				'public/js/src/controller/*.js',
-				'public/js/src/directive/*.js',
-				'public/js/src/filter/*.js',
-				'public/js/src/resource/*.js',
-				'public/js/src/service/*.js'
+				'public/js/src/**/*.js',
+				'public/js/test/**/*.js',
+				'config/*.js',
+				'*.js'
 			]
 		},
 
@@ -96,8 +137,11 @@ module.exports = function (grunt) {
 
 	// Load plugins/tasks.
 	grunt.loadNpmTasks('grunt-contrib');
+	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadTasks('tasks');
 
 	// Register tasks.
+	grunt.registerTask('test', 'server exec');
+	grunt.registerTask('test.watch', 'server exec watch:test');
 	grunt.registerTask('default', 'lint less requirejs html copy');
-}
+};
