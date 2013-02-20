@@ -61,7 +61,17 @@ module.exports = function (grunt) {
 		// Linting options.
 		jshint: {
 			options: {
-				nomen: false
+				nomen: false,
+				curly: true,
+				camelcase: true,
+				eqeqeq: true,
+				newcap: true,
+				undef: true,
+				trailing: true,
+				strict: true,
+				latedef: true,
+				indent: true,
+				quotmark: true
 			},
 			global: {
 				define: true,
