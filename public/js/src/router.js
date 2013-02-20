@@ -1,3 +1,6 @@
+/*jshint nomen:false */
+/*global define:true */
+
 define(
 	[
 		'app',
