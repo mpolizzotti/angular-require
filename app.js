@@ -16,6 +16,8 @@ var app = express();
 
 // All server configurations.
 app.configure(function () {
+	'use strict';
+
 	// settings.
 	app.set('port', nconf.get('PORT') || 3000);
 	app.set('views', __dirname + '/views');
@@ -34,7 +36,8 @@ app.configure(function () {
 });
 
 // Development server configuration.
-app.configure('development', function(){
+app.configure('development', function () {
+	'use strict';
 	app.use(express.errorHandler());
 });
 
@@ -43,5 +46,6 @@ routes(app);
 
 // Startup.
 http.createServer(app).listen(app.get('port'), function () {
-	console.log("Express server listening on port " + app.get('port'));
+	'use strict';
+	console.log('Express server listening on port ' + app.get('port'));
 });
