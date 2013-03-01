@@ -4,8 +4,8 @@
 define(
 	[
 		'app',
-		'debug',
 		'angular',
+		'controller/ApplicationCtrl',
 		'controller/PhotoListCtrl',
 		'controller/PhotoDetailCtrl'
 	],
