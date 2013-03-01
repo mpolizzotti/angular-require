@@ -45,10 +45,8 @@ require(
 		'debug',
 		'router'
 	],
-	function (app, debug) {
+	function (app) {
 		'use strict';
-
-		debug.setLevel(3);
 		app.init();
 	}
 );
